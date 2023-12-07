@@ -15,7 +15,7 @@ const Billboard: React.FC<BillboardProps> = ({
          }}>
             <div className="h-full w-full flex flex-col justify-center items-center gap-y-8">
                 <div className="font-bold text-3xl sm:text-5xl lg:text-6xl sm:max-w-xl max-w-xs bg-neutral-200 opacity-60 rounded-xl backdrop-blur-xl blur-sm">
-                    <h1 className="backdrop-filter-none blur-none opacity-100 z-1">{data.label}</h1>
+                    <h1 className="backdrop-filter-none blur-none opacity-100 z-10">{data.label}</h1>
                 </div>
             </div>
         </div>
