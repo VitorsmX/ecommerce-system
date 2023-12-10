@@ -31,14 +31,22 @@ const Info: React.FC<InfoProps> = ({
             <hr className="my-4" />
             <div className="flex flex-col gap-y-6">
                 <div className="flex items-center gap-x-4">
-                    <h3 className="font-semibold text-black">Tamanho: </h3>
+                    <h3 className="font-semibold text-black">Tamanho/ Volume: </h3>
                     <div>
                         {data?.size?.name}
                     </div>
                 </div>
                 <div className="flex items-center gap-x-4">
-                    <h3 className="font-semibold text-black">Cor: </h3>
-                    <div className="h-6 w-6 rounded-full border border-gray-600" style={{ backgroundColor: data?.color?.value }} />
+                    <h3 className="font-semibold text-black">Marca: </h3>
+                    <div className="text-sm text-black">
+                        {data?.brand?.name}
+                    </div>
+                </div>
+                <div className="flex items-center gap-x-4">
+                    <h3 className="font-semibold text-black">Descrição: </h3>
+                    <div className="text-lg text-black h-7 hover:min-h-fit">
+                        {data?.description?.description}
+                    </div>
                 </div>
             </div>
             <div className="mt-10 flex items-center gap-x-3">
