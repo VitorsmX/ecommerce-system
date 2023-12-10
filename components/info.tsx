@@ -44,7 +44,7 @@ const Info: React.FC<InfoProps> = ({
                 </div>
                 <div className="flex items-center gap-x-4">
                     <h3 className="font-semibold text-black">Descrição: </h3>
-                    <div className="text-lg text-black h-7 hover:min-h-fit">
+                    <div className="text-lg text-black h-7 hover:min-h-fit w-20 sm:w-10">
                         {data?.description?.description}
                     </div>
                 </div>
