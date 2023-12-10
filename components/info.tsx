@@ -44,12 +44,12 @@ const Info: React.FC<InfoProps> = ({
                 </div>
                 <div className="flex items-center gap-x-4">
                     <h3 className="font-semibold text-black">Descrição: </h3>
-                    <div className="text-lg text-black h-7 hover:min-h-fit w-20 sm:w-10">
+                    <div className="text-sm text-black h-72 overflow-scroll max-w-lg sm:max-w-md">
                         {data?.description?.description}
                     </div>
                 </div>
             </div>
-            <div className="mt-10 flex items-center gap-x-3">
+            <div className="mt-10 flex fixed items-center gap-x-3">
                 <Button onClick={onAddToCart} className="flex items-center gap-x-2">
                     Add To Cart
                     <ShoppingCart size={20} />
