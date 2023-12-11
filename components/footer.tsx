@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-white border-t">
+    <footer className="border-t">
         <div className="mx-auto py-10">
             <p className="text-center text-xs text-black">
                 &copy; 2023 Fetiche Boutique Erótica, Inc. All rights reserved.
