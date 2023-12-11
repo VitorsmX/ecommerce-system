@@ -10,7 +10,7 @@ export const revalidate = 0;
 const Navbar = async () => {
 
     const categories = await getCategories();
-    const store = await getStore()
+    const store = await getStore();
 
     return (
         <div className="border-b bg-red-700">
