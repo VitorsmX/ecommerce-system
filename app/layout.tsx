@@ -11,6 +11,28 @@ const font = Urbanist({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Loja Virtual Fetiche',
   description: 'Produtos Eróticos e Cosméticos Íntimos Sob Demanda',
+  openGraph: {
+    title: 'Loja Vitual Fetiche - Compre Aqui',
+    description: 'Conheça o próximo nível em Produtos Eróticos',
+    url: 'https://ecommerce-system-ejno.vercel.app/',
+    siteName: 'Loja Vitual Fetiche',
+    images: [
+      {
+        url: 'https://res.cloudinary.com/dxljzxgam/image/upload/v1702321608/pd3bg2mvzqvgfs38wpoy.png',
+        width: 800,
+        height: 600,
+        alt: 'Home Page',
+      },
+      {
+        url: 'https://res.cloudinary.com/dxljzxgam/image/upload/v1702321608/pd3bg2mvzqvgfs38wpoy.png',
+        width: 1800,
+        height: 1600,
+        alt: 'Home Page',
+      },
+    ],
+    locale: 'pt_BR',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({
