@@ -1,5 +1,7 @@
 "use client";
 
+import { Menu } from '@headlessui/react'
+import { MenuIcon } from 'lucide-react';
 import Link from "next/link"
 import { usePathname } from "next/navigation";
 
@@ -25,18 +27,25 @@ const MainNav: React.FC<MainNavProps> = ({
     <nav
       className="mx-6 flex items-center space-x-4 lg:space-x-6"
     >
-      {routes.map((route) => (
-        <Link
-          key={route.href}
-          href={route.href}
-          className={cn(
-            'text-sm font-medium transition-colors hover:text-black',
-            route.active ? 'text-black' : 'text-neutral-500'
-          )}
-        >
-          {route.label}
-      </Link>
-      ))}
+      <Menu>
+        <Menu.Button><MenuIcon size={20} /></Menu.Button>
+        <Menu.Items>
+          {routes.map((route) => (
+            <Menu.Item>
+              <Link
+                key={route.href}
+                href={route.href}
+                className={cn(
+                  'text-sm font-medium transition-colors hover:text-black',
+                  route.active ? 'text-black' : 'text-neutral-500'
+                )}
+              >
+                {route.label}
+              </Link>
+            </Menu.Item>
+          ))}
+        </Menu.Items>
+      </Menu>
     </nav>
   )
 };
