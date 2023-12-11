@@ -28,7 +28,7 @@ const MainNav: React.FC<MainNavProps> = ({
       className="mx-6 flex items-center space-x-4 lg:space-x-6"
     >
       <Menu>
-        <Menu.Button><MenuIcon size={20} /></Menu.Button>
+        <Menu.Button>Categorias</Menu.Button>
         <Menu.Items>
           {routes.map((route) => (
             <Menu.Item key={route.href}>
