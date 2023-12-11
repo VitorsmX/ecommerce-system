@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className='bg-gradient-to-b bg-fuchsia-400 bg-no-repeat'>
       <body className={font.className}>
         <ModalProvider />
         <ToastProvider />
