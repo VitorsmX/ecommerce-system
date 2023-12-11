@@ -31,7 +31,7 @@ const MainNav: React.FC<MainNavProps> = ({
         <Menu.Button><MenuIcon size={20} /></Menu.Button>
         <Menu.Items>
           {routes.map((route) => (
-            <Menu.Item>
+            <Menu.Item key={route.href}>
               <Link
                 key={route.href}
                 href={route.href}
