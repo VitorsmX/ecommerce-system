@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: 'Loja Virtual Fetiche',
   description: 'Produtos Eróticos e Cosméticos Íntimos Sob Demanda',
   openGraph: {
-    title: 'Loja Vitual Fetiche - Compre Aqui',
+    title: 'Loja Virtual Fetiche - Compre Aqui',
     description: 'Conheça o próximo nível em Produtos Eróticos',
     url: 'https://ecommerce-system-ejno.vercel.app/',
     siteName: 'Loja Vitual Fetiche',
