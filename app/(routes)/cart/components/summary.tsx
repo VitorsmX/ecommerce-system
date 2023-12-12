@@ -64,7 +64,7 @@ const Summary = () => {
                 </div>
                 <div className="flex items-center justify-between border-t border-gray-200 pt-4">
                     <div className="text-base font-medium text-gray-900">
-                        Valor Total
+                        Quantidade Total
                     </div>
                     {totalQuantity}
                 </div>
