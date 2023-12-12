@@ -27,16 +27,26 @@ const Summary = () => {
     }, [searchParams, removeAll])
 
     const totalPrice = items.reduce((total, item) => {
-        return total + Number(item.price);
+        return total + (Number(item.price) * item.itemQuantity);
     }, 0)
 
     const onCheckout = async () => {
         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-            productIds: items.map((item) => item.id)
+            productIds: items.map((item) => 
+            {
+                return {
+                    id: item.id,
+                    itemQuantity: item.itemQuantity
+                }
+            })
         })
 
         window.location = response.data.url;
     }
+
+    const totalQuantity = items.reduce((total, item) => {
+        return total + item.itemQuantity
+    }, 0)
 
     return (
         <div
@@ -51,6 +61,12 @@ const Summary = () => {
                         Valor Total
                     </div>
                     <Currency value={totalPrice} />
+                </div>
+                <div className="flex items-center justify-between border-t border-gray-200 pt-4">
+                    <div className="text-base font-medium text-gray-900">
+                        Valor Total
+                    </div>
+                    {totalQuantity}
                 </div>
             </div>
             <Button disabled={items.length === 0} onClick={onCheckout} className="w-full mt-6">

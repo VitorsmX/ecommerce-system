@@ -1,10 +1,12 @@
 "use client"
 
-import { Product } from "@/types";
+import { Product, ProductCard } from "@/types";
 import Currency from "@/components/ui/currency";
 import Button from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import useCart from "@/hooks/use-cart";
+import { NumberInput } from "@mui/base/Unstable_NumberInput/NumberInput";
+import { useState } from "react";
 
 interface InfoProps {
     data: Product;
@@ -14,10 +16,26 @@ const Info: React.FC<InfoProps> = ({
     data
 }) => {
 
+    const [itemQuantity, setItemQuantity] = useState(0);
+
     const cart = useCart();
 
+    const dataWithQuantity: ProductCard = {
+            id: data.id,
+            category: data.category,
+            name: data.name,
+            price: data.price,
+            isFeatured: data.isFeatured,
+            size: data.size,
+            quantity: data.quantity,
+            brand: data.brand,
+            description: data.description,
+            images: data.images,
+            itemQuantity
+    }
+
     const onAddToCart = () => {
-        cart.addItem(data);
+        cart.addItem(dataWithQuantity);
     }
 
     return (
@@ -44,9 +62,18 @@ const Info: React.FC<InfoProps> = ({
                 </div>
                 <div className="flex items-center gap-x-4">
                     <h3 className="font-semibold text-black">Descrição: </h3>
-                    <div className="text-sm text-black h-72 overflow-scroll max-w-lg sm:max-w-md">
+                    <div className="text-sm text-black h-48 overflow-scroll max-w-lg sm:max-w-md">
                         {data?.description?.description}
                     </div>
+                </div>
+                <div className="flex items-center gap-x-4">
+                    <h3 className="font-semibold text-black">Quantidade: </h3>
+                    <div className="text-sm text-black h-48 overflow-scroll max-w-lg sm:max-w-md">
+                        {data?.quantity}
+                    </div>
+                </div>
+                <div className="flex items-center gap-x-4">
+                    <NumberInput onChange={(event, newValue) => setItemQuantity(newValue!)} min={0} max={data?.quantity} defaultValue={0} />
                 </div>
             </div>
             <div className="mt-10 flex items-center gap-x-3">

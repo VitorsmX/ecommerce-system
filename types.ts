@@ -22,9 +22,14 @@ export interface Product {
     price: string;
     isFeatured: boolean;
     size: Size;
+    quantity: number;
     brand: Brand;
     description: Description;
     images: Image[];
+}
+
+export interface ProductCard extends Product {
+    itemQuantity: number; 
 }
 
 export interface Image {

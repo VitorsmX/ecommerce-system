@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import { Product } from "@/types"
+import { Product, ProductCard } from "@/types"
 import { persist, createJSONStorage } from "zustand/middleware";
 import { toast } from "react-hot-toast";
 
 interface CartStore {
-    items: Product[];
-    addItem: (data: Product) => void;
+    items: ProductCard[];
+    addItem: (data: ProductCard) => void;
     removeItem: (id: string) => void;
     removeAll: () => void;
 }
@@ -13,15 +13,18 @@ interface CartStore {
 const useCart = create(
     persist<CartStore>((set, get) => ({
         items: [],
-        addItem: (data: Product) => {
+        addItem: (data: ProductCard) => {
             const currentItems = get().items;
             const existingItem = currentItems.find((item) => item.id === data.id);
 
-            if(existingItem) {
-                return toast("O item já está no carrinho")
+            let itemQuantity: ProductCard["itemQuantity"] | undefined = existingItem?.itemQuantity
+            let formattedData: ProductCard = data
+
+            if(existingItem && itemQuantity && data.itemQuantity === 0) {
+                formattedData["itemQuantity"] = itemQuantity + 1
             }
 
-            set({ items: [...get().items, data] });
+            set({ items: [...get().items, formattedData] });
             toast.success("Item adicionado no carrinho")
         },
         removeItem: (id: string) => {
