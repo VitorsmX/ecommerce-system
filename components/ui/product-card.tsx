@@ -79,7 +79,6 @@ const ProductCard: React.FC<ProductCardView> = ({
                             icon={<ShoppingCart size={20} className="text-gray-600" />}
                         />
                     </div>
-                    <NumberInput onChange={(event, newValue) => setItemQuantity(newValue!)} min={0} max={data.quantity} defaultValue={0} />
                 </div>
             </div>
             {/* Description */}
@@ -91,7 +90,10 @@ const ProductCard: React.FC<ProductCardView> = ({
                     {data.category?.name}
                 </p>
                 <p className="text-sm text-gray-500">
-                    Quantidade: {data?.quantity}
+                    Em Estoque: {data?.quantity}
+                </p>
+                <p className="text-sm text-gray-500">
+                    Defina a quantidade: <NumberInput onChange={(event, newValue) => setItemQuantity(newValue!)} min={0} max={data.quantity} />
                 </p>
             </div>
             {/* Price */}
