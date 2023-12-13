@@ -25,7 +25,7 @@ const MainNav: React.FC<MainNavProps> = ({
 
   return (
     <nav
-      className="mx-6 flex items-center space-x-4 lg:space-x-6"
+      className="mx-6 flex max-md:flex-col items-center space-x-4 lg:space-x-6"
     >
       <Menu>
         <Menu.Button>Categorias</Menu.Button>
@@ -36,8 +36,8 @@ const MainNav: React.FC<MainNavProps> = ({
                 key={route.href}
                 href={route.href}
                 className={cn(
-                  'text-sm font-medium transition-all hover:text-yellow-500 hover:blur-[0.5px]',
-                  route.active ? 'text-yellow-600' : 'text-neutral-900'
+                  'text-sm font-medium transition-all hover:text-yellow-300 hover:blur-[0.5px]',
+                  route.active ? 'text-yellow-400' : 'text-neutral-300'
                 )}
               >
                 {route.label}

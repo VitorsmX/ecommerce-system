@@ -13,11 +13,11 @@ const Navbar = async () => {
     const store = await getStore();
 
     return (
-        <div className="border-b bg-red-700">
+        <div className="border-b bg-red-900">
             <Container>
                 <div className="relative px-4 sm:px-6 lg:px-8 flex h-16 items-center">
                     <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
-                        <p className="font-bold text-xl">{store?.name}</p>
+                        <p className="font-bold text-xl text-white blur-[0.2px]">{store?.name}</p>
                     </Link>
                     <MainNav data={categories} />
                     <NavbarActions />
