@@ -48,6 +48,9 @@ const ProductCard: React.FC<ProductCardView> = ({
 
     const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.stopPropagation();
+        if(!dataWithQuantity.itemQuantity || dataWithQuantity.itemQuantity <= 0) {
+            dataWithQuantity.itemQuantity = 1
+        }
 
         previewModal.onOpen(dataWithQuantity);
     }
