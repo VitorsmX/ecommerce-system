@@ -66,7 +66,7 @@ const Info: React.FC<InfoProps> = ({
                         {data?.quantity}
                     </div>
                 </div>
-                <div className="flex items-center gap-x-4 border-black border">
+                <div className="flex items-center gap-x-4 border-black border p-1">
                     <h3 className="font-semibold text-black">Defina a quantidade: </h3>
                     <NumberInput onChange={(event, newValue) => setItemQuantity(newValue!)} min={0} max={data?.quantity} defaultValue={0} />
                 </div>
