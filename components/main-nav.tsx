@@ -25,11 +25,11 @@ const MainNav: React.FC<MainNavProps> = ({
 
   return (
     <nav
-      className="mx-6 flex max-md:flex-col items-center space-x-4 lg:space-x-6"
+      className="mx-6 flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6"
     >
       <Menu>
         <Menu.Button>Categorias</Menu.Button>
-        <Menu.Items>
+        <Menu.Items className="space-y-4 sm:space-y-0 sm:flex sm:space-x-4 lg:space-x-6">
           {routes.map((route) => (
             <Menu.Item key={route.href}>
               <Link
