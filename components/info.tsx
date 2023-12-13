@@ -61,19 +61,20 @@ const Info: React.FC<InfoProps> = ({
                     </div>
                 </div>
                 <div className="flex items-center gap-x-4">
-                    <h3 className="font-semibold text-black">Descrição: </h3>
-                    <div className="text-sm text-black h-48 overflow-scroll max-w-lg sm:max-w-md">
-                        {data?.description?.description}
-                    </div>
-                </div>
-                <div className="flex items-center gap-x-4">
-                    <h3 className="font-semibold text-black">Quantidade: </h3>
+                    <h3 className="font-semibold text-black">Em Estoque: </h3>
                     <div className="text-sm text-black h-48 overflow-scroll max-w-lg sm:max-w-md">
                         {data?.quantity}
                     </div>
                 </div>
                 <div className="flex items-center gap-x-4">
+                <h3 className="font-semibold text-black">Defina a quantidade: </h3>
                     <NumberInput onChange={(event, newValue) => setItemQuantity(newValue!)} min={0} max={data?.quantity} defaultValue={0} />
+                </div>
+                <div className="flex items-center gap-x-4">
+                    <h3 className="font-semibold text-black">Descrição: </h3>
+                    <div className="text-sm text-black h-28 overflow-scroll max-w-lg sm:max-w-md">
+                        {data?.description?.description}
+                    </div>
                 </div>
             </div>
             <div className="mt-10 flex items-center gap-x-3">
