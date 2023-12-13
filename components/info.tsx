@@ -35,6 +35,9 @@ const Info: React.FC<InfoProps> = ({
     }
 
     const onAddToCart = () => {
+        if(dataWithQuantity.itemQuantity <= 0) {
+            dataWithQuantity.itemQuantity = 1
+        }
         cart.addItem(dataWithQuantity);
     }
 

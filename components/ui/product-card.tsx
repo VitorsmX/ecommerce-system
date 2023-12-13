@@ -54,6 +54,9 @@ const ProductCard: React.FC<ProductCardView> = ({
 
     const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.stopPropagation();
+        if(dataWithQuantity.itemQuantity <= 0) {
+            dataWithQuantity.itemQuantity = 1
+        }
 
         cart.addItem(dataWithQuantity)
     }
