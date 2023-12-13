@@ -92,8 +92,8 @@ const ProductCard: React.FC<ProductCardView> = ({
                 <p className="text-sm text-gray-500">
                     Em Estoque: {data?.quantity}
                 </p>
-                <p className="text-sm text-gray-500">
-                    Defina a quantidade: <NumberInput onChange={(event, newValue) => setItemQuantity(newValue!)} min={0} max={data.quantity} />
+                <p className="text-sm text-gray-500 border border-black">
+                    Defina a quantidade: <NumberInput onChange={(event, newValue) => setItemQuantity(newValue!)} min={0} max={data.quantity} defaultValue={0} />
                 </p>
             </div>
             {/* Price */}

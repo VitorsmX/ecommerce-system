@@ -17,14 +17,11 @@ const useCart = create(
             const currentItems = get().items;
             const existingItem = currentItems.find((item) => item.id === data.id);
 
-            let itemQuantity: ProductCard["itemQuantity"] | undefined = existingItem?.itemQuantity
-            let formattedData: ProductCard = data
-
-            if(existingItem && itemQuantity && data.itemQuantity === 0) {
-                formattedData["itemQuantity"] = itemQuantity + 1
+            if(existingItem) {
+                return toast("O item já está no carrinho")
             }
 
-            set({ items: [...get().items, formattedData] });
+            set({ items: [...get().items, data] });
             toast.success("Item adicionado no carrinho")
         },
         removeItem: (id: string) => {
