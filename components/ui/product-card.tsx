@@ -48,7 +48,7 @@ const ProductCard: React.FC<ProductCardView> = ({
 
     const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.stopPropagation();
-        if(!dataWithQuantity.itemQuantity || dataWithQuantity.itemQuantity <= 0) {
+        if(!dataWithQuantity.itemQuantity || !(typeof dataWithQuantity.itemQuantity === "number") || dataWithQuantity.itemQuantity <= 0) {
             dataWithQuantity.itemQuantity = 1
         }
 
@@ -57,7 +57,7 @@ const ProductCard: React.FC<ProductCardView> = ({
 
     const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
         event.stopPropagation();
-        if(dataWithQuantity.itemQuantity <= 0) {
+        if(!dataWithQuantity.itemQuantity || !(typeof dataWithQuantity.itemQuantity === "number") || dataWithQuantity.itemQuantity <= 0) {
             dataWithQuantity.itemQuantity = 1
         }
 
