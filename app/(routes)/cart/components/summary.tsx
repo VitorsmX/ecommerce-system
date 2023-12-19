@@ -8,40 +8,43 @@ import Button from "@/components/ui/button"
 import Currency from "@/components/ui/currency"
 import useCart from "@/hooks/use-cart"
 import { toast } from "react-hot-toast"
+import { Wallet } from "@mercadopago/sdk-react"
+import React from "react"
+import Payment from "@/components/payment/payment"
+import getPreferenceId from "@/actions/get-preferenceId"
+import usePref from "@/hooks/use-preference-id"
 
 const Summary = () => {
 
     const searchParams = useSearchParams();
     const items = useCart((state) => state.items);
+    const setPrefId = usePref()
+    const prefId = usePref((state) => state.item)
     const removeAll = useCart((state) => state.removeAll);
+    const [isReady, setIsReady] = React.useState(false);
 
-    useEffect(() => {
-        if (searchParams.get("success")) {
-            toast.success("Pagamento Completo")
-            removeAll();
-        }
-
-        if(searchParams.get("canceled")) {
-            toast.error("Algo deu errado");
-        }
-    }, [searchParams, removeAll])
+    const handleOnReady = () => {
+        setIsReady(true);
+      }
 
     const totalPrice = items.reduce((total, item) => {
         return total + (Number(item.price) * item.itemQuantity);
     }, 0)
 
-    const onCheckout = async () => {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-            productIds: items.map((item) => 
-            {
-                return {
-                    id: item.id,
-                    itemQuantity: item.itemQuantity
-                }
-            })
-        })
+    const renderCheckoutButton = (preferenceId: string | null) => {
+        return Payment(preferenceId)
+      }
 
-        window.location = response.data.url;
+    const onCheckout = async () => {
+        
+        const preferenceId = await getPreferenceId(items)
+
+        if(preferenceId) {
+            setPrefId.setItem(preferenceId)
+            handleOnReady()
+        } else {
+            setIsReady(false)
+        }
     }
 
     const totalQuantity = items.reduce((total, item) => {
@@ -52,6 +55,7 @@ const Summary = () => {
         <div
             className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
         >
+            {isReady && renderCheckoutButton(prefId)}
             <h2 className="text-lg font-medium text-gray-900">
                 Pedido
             </h2>
