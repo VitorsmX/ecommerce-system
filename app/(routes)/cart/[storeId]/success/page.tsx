@@ -1,7 +1,7 @@
 import getStore from "@/actions/get-store"
 import Button from "@/components/ui/button"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { redirect } from "next/navigation"
 
 interface SuccessPageProps {
   params: {
@@ -20,11 +20,8 @@ const SuccessPage: React.FC<SuccessPageProps> = async ({
     return null
   }
 
-
-  const router = useRouter();
-
   const onClick = () => {
-    router.push(baseURL)
+    redirect(baseURL)
   }
 
   return (
