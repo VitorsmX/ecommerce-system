@@ -1,39 +1,23 @@
 "use client"
 
-import getStore from "@/actions/get-store"
 import Button from "@/components/ui/button"
 import Link from "next/link"
 import { redirect } from "next/navigation"
-import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
- 
-type Store = {
-  id: string
-}
 
-interface FailurePageProps {
+interface SuccessPageProps {
   params: {
-      storeId: string
-  },
-  storeId: Store["id"]
+      storeid: string
+  }
 };
 
-export const getServerSideProps = (async () => {
-  // Fetch data from external API
-  const id = await getStore()
-  const storeId = id.id
-  // Pass data to the page via props
-  return { props: { storeId } }
-}) satisfies GetServerSideProps<{ storeId: Store["id"] }>
 
-
-const SuccessPage: React.FC<FailurePageProps> = ({
-  params,
-  storeId
+const SuccessPage: React.FC<SuccessPageProps> = ({
+  params
 }) => {
 
     const baseURL = `${process.env.FRONTEND_STORE_URL!}`
 
-    if(params.storeId !== storeId) {
+    if(!params.storeid) {
       redirect(baseURL)
     }
 
