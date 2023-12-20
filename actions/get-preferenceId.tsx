@@ -12,12 +12,15 @@ const getPreferenceId = async (items: ProductCard[]): Promise<string | null> => 
                     itemQuantity: item.itemQuantity
                 }
             })
+        }).then(function (response) {
+            return response.data
         });
-        const prefId = response.data.id ? response.data.id : null;
 
-        return prefId;
+        const { id } = response || null;
+
+        return id;
     } catch (error) {
-        console.error(error);
+        console.log(error);
         return null;
     }
 }

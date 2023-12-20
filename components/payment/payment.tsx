@@ -3,7 +3,13 @@
 import React, { useEffect } from 'react';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 
-const Payment = (preferenceId: string | null) => {
+interface PaymentProps {
+  preferenceId: string;
+}
+
+const Payment: React.FC<PaymentProps> = ({
+  preferenceId
+}) => {
 
     useEffect(() => {
       initMercadoPago(process.env.NEXT_PUBLIC_MERCADO_PAGO_SAMPLE_PUBLIC_KEY!, { locale: 'pt-BR' });

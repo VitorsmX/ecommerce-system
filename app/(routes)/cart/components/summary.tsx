@@ -18,10 +18,9 @@ const Summary = () => {
 
     const searchParams = useSearchParams();
     const items = useCart((state) => state.items);
-    const setPrefId = usePref()
-    const prefId = usePref((state) => state.item)
     const removeAll = useCart((state) => state.removeAll);
     const [isReady, setIsReady] = React.useState(false);
+    const [prefId, setPrefId] = React.useState('')
 
     const handleOnReady = () => {
         setIsReady(true);
@@ -31,16 +30,12 @@ const Summary = () => {
         return total + (Number(item.price) * item.itemQuantity);
     }, 0)
 
-    const renderCheckoutButton = (preferenceId: string | null) => {
-        return Payment(preferenceId)
-      }
-
     const onCheckout = async () => {
         
         const preferenceId = await getPreferenceId(items)
 
         if(preferenceId) {
-            setPrefId.setItem(preferenceId)
+            setPrefId(preferenceId)
             handleOnReady()
         } else {
             setIsReady(false)
@@ -55,7 +50,7 @@ const Summary = () => {
         <div
             className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
         >
-            {isReady && renderCheckoutButton(prefId)}
+            {isReady && <Payment preferenceId={prefId}/>}
             <h2 className="text-lg font-medium text-gray-900">
                 Pedido
             </h2>
