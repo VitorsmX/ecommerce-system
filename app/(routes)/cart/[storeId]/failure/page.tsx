@@ -1,23 +1,40 @@
+"use client"
+
 import getStore from "@/actions/get-store"
 import Button from "@/components/ui/button"
 import Link from "next/link"
 import { redirect } from "next/navigation"
+import type { InferGetServerSidePropsType, GetServerSideProps } from 'next'
+ 
+type Store = {
+  id: string
+}
 
 interface FailurePageProps {
   params: {
-      storeId: string
-  }
+      storeid: string
+  },
+  storeId: Store["id"]
 };
 
-const FailurePage: React.FC<FailurePageProps> = async ({
-  params
+export const getServerSideProps = (async () => {
+  // Fetch data from external API
+  const id = await getStore()
+  const storeId = id.id
+  // Pass data to the page via props
+  return { props: { storeId } }
+}) satisfies GetServerSideProps<{ storeId: Store["id"] }>
+
+
+const FailurePage: React.FC<FailurePageProps> = ({
+  params,
+  storeId
 }) => {
 
     const baseURL = `${process.env.FRONTEND_STORE_URL!}`
-    const storeId = await getStore()
 
-    if(params.storeId !== storeId.id) {
-      return null
+    if(params.storeid !== storeId) {
+      redirect(baseURL)
     }
 
     const onClick = () => {
