@@ -52,3 +52,15 @@ export interface Description {
     id: string;
     description: string;
 }
+
+export interface PaymentInfo {
+    id: string,
+    userName: string,
+    address: string,
+    value: string
+}
+
+export interface PaymentInfoFailure {
+    id: string,
+    productNames: string
+}
