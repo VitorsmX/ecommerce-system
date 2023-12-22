@@ -53,8 +53,8 @@ const FailurePage: React.FC<FailurePageProps> = ({
     <div className="flex-col space-y-5">
       <div className="bg-red-300 text-3xl flex self-center justify-self-center w-2/3 mt-10">Houve um problema com o pagamento, para dúvidas, entre em contato com: <Link className="text-lg" href="https://api.whatsapp.com/send?phone=5591980423355">+55 (91) 9 96360055</Link></div>
       <div className="space-y-6">
-        <h3>ID do pagamento: {paymentInfoFailure.id}</h3>
-        <h3>Produtos: {paymentInfoFailure.productNames}</h3>
+        <h3>ID do pagamento: {paymentInfoFailure?.id}</h3>
+        <h3>Produtos: {paymentInfoFailure?.productNames}</h3>
       </div>
       <Button className="w-1/3 mt-6" onClick={onClick}>Voltar</Button>
     </div>

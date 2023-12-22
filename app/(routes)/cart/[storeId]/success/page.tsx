@@ -52,10 +52,10 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
       <div className="bg-green-300 text-3xl flex-col self-center justify-self-center w-2/3 mt-10">O pagamento foi realizado, seu produto chegará em breve, para dúvidas, entre em contato com: <Link className="text-lg mt-3" href="https://api.whatsapp.com/send?phone=5591980423355">+55 (91) 9 96360055</Link></div>
       <hr />
       <div className="space-y-6">
-        <h3>ID do pagamento: {paymentInfo.id}</h3>
-        <h3>Nome do comprador: {paymentInfo.userName}</h3>
-        <h3>Endereço onde será feita entrega: {paymentInfo.address}</h3>
-        <h3>Valor: {<Currency value={parseFloat(paymentInfo.value)} />}</h3>
+        <h3>ID do pagamento: {paymentInfo?.id}</h3>
+        <h3>Nome do comprador: {paymentInfo?.userName}</h3>
+        <h3>Endereço onde será feita entrega: {paymentInfo?.address}</h3>
+        <h3>Valor: {<Currency value={parseFloat(paymentInfo?.value)} />}</h3>
       </div>
       <Button className="w-1/3 mt-6" onClick={onClick}>Voltar</Button>
     </div>
