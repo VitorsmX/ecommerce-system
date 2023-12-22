@@ -30,7 +30,7 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
 
   const fetcher = (url: string) => axios.get(url).then(res => res.data)
 
-  const { data, error } = useSWR(URL, fetcher)
+  const { data, error } = useSWR(URL, () => fetcher(URL))
 
   if(error) {
     console.log(error)
