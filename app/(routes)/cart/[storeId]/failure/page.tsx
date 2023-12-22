@@ -27,7 +27,7 @@ const FailurePage: React.FC<FailurePageProps> = ({
 
   const fetcher = (url: string) => axios.get(url).then(res => res.data)
 
-  const { data, error, isLoading } = useSWR(URL, fetcher)
+  const { data, error } = useSWR(URL, fetcher)
 
   if(error) {
     console.log(error)
