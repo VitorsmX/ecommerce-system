@@ -6,7 +6,7 @@ import { redirect } from "next/navigation"
 
 interface SuccessPageProps {
   params: {
-      storeid: string
+      storeId: string
   }
 };
 
@@ -17,7 +17,7 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
 
     const baseURL = `${process.env.FRONTEND_STORE_URL!}`
 
-    if(!params.storeid) {
+    if(!params.storeId) {
       redirect(baseURL)
     }
 
