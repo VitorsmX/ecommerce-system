@@ -21,6 +21,7 @@ const FailurePage: React.FC<FailurePageProps> = ({
   const router = useRouter()
   const searchParams = useSearchParams()!
   const preferenceId = searchParams.get("preference_id")
+  console.log(preferenceId)
 
   const URL = `${process.env.NEXT_PUBLIC_API_URL}/get-preference/${preferenceId}`;
 
@@ -41,12 +42,6 @@ const FailurePage: React.FC<FailurePageProps> = ({
 
   if (!params.storeId && preferenceId === null) {
     router.push("/")
-  }
-
-  const baseURL = `${process.env.FRONTEND_STORE_URL!}`
-
-  if (!params.storeId) {
-    redirect(baseURL)
   }
 
   const onClick = () => {

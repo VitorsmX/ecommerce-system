@@ -23,6 +23,8 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
   const router = useRouter()
   const preferenceId = searchParams.get("preference_id")
   const paymentId = searchParams.get("payment_id")
+  console.log(preferenceId)
+  console.log(paymentId)
 
   const URL = `${process.env.NEXT_PUBLIC_API_URL}/payments/${paymentId}/${preferenceId}`;
 
