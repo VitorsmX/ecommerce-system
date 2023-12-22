@@ -30,6 +30,10 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
 
   const { data, error, isLoading } = useSWR(URL, fetcher)
 
+  if(error) {
+    console.log(error)
+  }
+
   const { id, userName, address, value }: PaymentInfo = data || null;
 
   const paymentInfo = {
