@@ -45,6 +45,8 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
     value
   }
 
+  console.log(paymentInfo)
+
   if (!params.storeId && preferenceId === null) {
     router.push("/")
   }

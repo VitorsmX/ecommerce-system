@@ -40,6 +40,8 @@ const FailurePage: React.FC<FailurePageProps> = ({
     productNames
   }
 
+  console.log(paymentInfoFailure)
+
   if (!params.storeId && preferenceId === null) {
     router.push("/")
   }
