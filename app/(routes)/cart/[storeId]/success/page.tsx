@@ -28,21 +28,26 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
 
   const URL = `${process.env.NEXT_PUBLIC_API_URL}/payments/${paymentId}/${preferenceId}`;
 
-  const fetcher = (url: string) => axios.get(url).then(res => res.data)
+  const fetcher = (url: string) => axios.post(url).then(res => res.data)
 
   const { data, error } = useSWR(URL, () => fetcher(URL))
 
-  if(error) {
+  if (error) {
     console.log(error)
   }
 
-  const { id, userName, address, value }: PaymentInfo = data || null;
+  let paymentInfo = null;
 
-  const paymentInfo = {
-    id,
-    userName,
-    address,
-    value
+  if (data) {
+
+    const { id, userName, address, value }: PaymentInfo = data;
+
+    paymentInfo = {
+      id,
+      userName,
+      address,
+      value
+    }
   }
 
   console.log(paymentInfo)
@@ -63,7 +68,7 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
         <h3>ID do pagamento: {paymentInfo?.id}</h3>
         <h3>Nome do comprador: {paymentInfo?.userName}</h3>
         <h3>Endereço onde será feita entrega: {paymentInfo?.address}</h3>
-        <h3>Valor: {<Currency value={parseFloat(paymentInfo?.value)} />}</h3>
+        <h3>Valor: {<Currency value={parseFloat(paymentInfo?.value as string)} />}</h3>
       </div>
       <Button className="w-1/3 mt-6" onClick={onClick}>Voltar</Button>
     </div>

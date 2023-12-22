@@ -29,15 +29,18 @@ const FailurePage: React.FC<FailurePageProps> = ({
 
   const { data, error } = useSWR(URL, () => fetcher(URL))
 
-  if(error) {
+  if (error) {
     console.log(error)
   }
 
-  const { id, productNames }: PaymentInfoFailure = data || null;
-
-  const paymentInfoFailure = {
-    id,
-    productNames
+  let paymentInfoFailure = null;
+  
+  if (data) {
+    const { id, productNames }: PaymentInfoFailure = data;
+    paymentInfoFailure = {
+      id,
+      productNames
+    }
   }
 
   console.log(paymentInfoFailure)
