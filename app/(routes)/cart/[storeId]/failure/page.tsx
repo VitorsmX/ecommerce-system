@@ -13,7 +13,6 @@ interface FailurePageProps {
   }
 };
 
-
 const FailurePage: React.FC<FailurePageProps> = ({
   params
 }) => {
@@ -21,17 +20,12 @@ const FailurePage: React.FC<FailurePageProps> = ({
   const router = useRouter()
   const searchParams = useSearchParams()!
   const preferenceId = searchParams.get("preference_id")
-  console.log(preferenceId)
 
   const URL = `${process.env.NEXT_PUBLIC_API_URL}/get-preference/${preferenceId}`;
 
   const fetcher = (url: string) => axios.get(url).then(res => res.data)
 
   const { data, error } = useSWR(URL, () => fetcher(URL))
-
-  if (error) {
-    console.log(error)
-  }
 
   let paymentInfoFailure = null;
   
@@ -42,8 +36,6 @@ const FailurePage: React.FC<FailurePageProps> = ({
       productNames
     }
   }
-
-  console.log(paymentInfoFailure)
 
   if (!params.storeId && preferenceId === null) {
     router.push("/")

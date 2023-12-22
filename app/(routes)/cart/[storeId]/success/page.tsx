@@ -23,18 +23,12 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
   const router = useRouter()
   const preferenceId = searchParams.get("preference_id")
   const paymentId = searchParams.get("payment_id")
-  console.log(preferenceId)
-  console.log(paymentId)
 
   const URL = `${process.env.NEXT_PUBLIC_API_URL}/payments/${paymentId}/${preferenceId}`;
 
   const fetcher = (url: string) => axios.post(url).then(res => res.data)
 
   const { data, error } = useSWR(URL, () => fetcher(URL))
-
-  if (error) {
-    console.log(error)
-  }
 
   let paymentInfo = null;
 
@@ -49,8 +43,6 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
       value
     }
   }
-
-  console.log(paymentInfo)
 
   if (!params.storeId && preferenceId === null) {
     router.push("/")
