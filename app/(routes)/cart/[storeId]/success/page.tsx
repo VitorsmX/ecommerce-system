@@ -23,6 +23,7 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
   const router = useRouter()
   const preferenceId = searchParams.get("preference_id")
   const paymentId = searchParams.get("payment_id")
+  const paymentStatus = searchParams.get("status")
 
   const URL = `${process.env.NEXT_PUBLIC_API_URL}/payments/${paymentId}/${preferenceId}`;
 
@@ -31,6 +32,8 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
   const { data, error } = useSWR(URL, () => fetcher(URL))
 
   let paymentInfo = null;
+
+  const statusMessage = paymentStatus === "approved" ? "O pagamento foi realizado, seu produto chegará em breve" : "O pagamento está em andamento"
 
   if (data) {
 
@@ -54,7 +57,7 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
 
   return (
     <div className="flex-col space-y-4">
-      <div className="bg-green-300 text-3xl flex-col self-center justify-self-center w-2/3 mt-10">O pagamento foi realizado, seu produto chegará em breve, para dúvidas, entre em contato com: <Link className="text-lg mt-3" href="https://api.whatsapp.com/send?phone=5591980423355">+55 (91) 9 96360055</Link></div>
+      <div className="bg-green-300 text-3xl flex-col self-center justify-self-center w-2/3 mt-10">{statusMessage}, para dúvidas, entre em contato com: <Link className="text-lg mt-3" href="https://api.whatsapp.com/send?phone=5591980423355">+55 (91) 9 96360055</Link></div>
       <hr />
       <div className="space-y-6">
         <h3>ID do pagamento: {paymentInfo?.id}</h3>
