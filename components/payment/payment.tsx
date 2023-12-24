@@ -27,7 +27,7 @@ const Payment: React.FC<PaymentProps> = ({
 
     return (
       <div>
-        {showLink && <Link className='my-4' href={"/cart/155fde0b-a678-4d94-9c9c-936d71c925ee/success"} onClick={() => router.push("/cart/155fde0b-a678-4d94-9c9c-936d71c925ee/success")} target="_blank">Clique aqui para acompanhar o pagamento</Link>}
+        {showLink && <Link className='my-4' href={"/cart/155fde0b-a678-4d94-9c9c-936d71c925ee/success"} target="_blank">Clique aqui para acompanhar o pagamento</Link>}
         <Wallet 
         initialization={{preferenceId: preferenceId, redirectMode: "blank"}}
         onReady={() => showRedirectLink()}
