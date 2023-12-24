@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface PaymentProps {
   preferenceId: string;
@@ -12,10 +13,12 @@ const Payment: React.FC<PaymentProps> = ({
   preferenceId
 }) => {
 
+    const [showLink, setShowLink] = useState(false)
+
     const router = useRouter()
 
-    const redirectSuccess = () => {
-      router.push(`/cart/155fde0b-a678-4d94-9c9c-936d71c925ee/success`)
+    const showRedirectLink = () => {
+      setShowLink(true)
     }
 
     useEffect(() => {
@@ -24,9 +27,10 @@ const Payment: React.FC<PaymentProps> = ({
 
     return (
       <div>
+        {showLink && <Link href={"/cart/155fde0b-a678-4d94-9c9c-936d71c925ee/success"} onClick={() => router.push("/cart/155fde0b-a678-4d94-9c9c-936d71c925ee/success")} target="_blank"></Link>}
         <Wallet 
         initialization={{preferenceId: preferenceId, redirectMode: "blank"}}
-        onReady={() => redirectSuccess()}
+        onReady={() => showRedirectLink()}
         onError={() => {}}
         />
       </div>
