@@ -26,7 +26,7 @@ const SuccessPage: React.FC<SuccessPageProps> = ({
 
   const URL = `${process.env.NEXT_PUBLIC_API_URL}/payments/${paymentId}/${preferenceId}`;
 
-  const fetcher = (url: string) => axios.post(url).then(res => res.data)
+  const fetcher = (url: string) => axios.get(url).then(res => res.data)
 
   const { data, error } = useSWR(URL, () => fetcher(URL))
 

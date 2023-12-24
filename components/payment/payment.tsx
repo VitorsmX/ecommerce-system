@@ -17,7 +17,7 @@ const Payment: React.FC<PaymentProps> = ({
 
     return (
       <div>
-        <Wallet initialization={{preferenceId: preferenceId as string}} />
+        <Wallet initialization={{preferenceId: preferenceId as string, redirectMode: 'modal'}}/>
       </div>
     );
 };
